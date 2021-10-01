@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "LeftPoint",
 "language": "GDScript",
 "path": "res://script/LeftTargetList.gd"
+}, {
+"base": "Resource",
+"class": "RightPoint",
+"language": "GDScript",
+"path": "res://script/RightTargetList.gd"
 } ]
 _global_script_class_icons={
 "Fist": "",
-"LeftPoint": ""
+"LeftPoint": "",
+"RightPoint": ""
 }
 
 [application]
