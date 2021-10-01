@@ -1,12 +1,7 @@
-extends StaticBody2D
-
-onready var target_left :Sprite = $TargetLeft 
-onready var left_hand :KinematicBody2D = $Body/LeftHand
-
-
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-func _process(delta: float) -> void:
-	pass
+extends KinematicBody2D
+#var speed = Vector2(1,1)
+#var velo = 1
+#func _physics_process(delta: float) -> void:
+#	if velo < 200:
+#		velo += 1
+#		move_and_slide((speed * velo))

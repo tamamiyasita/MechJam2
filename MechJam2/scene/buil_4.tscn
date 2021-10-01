@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scene/buil.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/buil_4.png-a5583cafb065b6403b2aa504a137907a.stex"
+
+[node name="buil_4" instance=ExtResource( 2 )]
+position = Vector2( 122.487, 78.2865 )
+
+[node name="Sprite" parent="." index="1"]
+texture = SubResource( 1 )
