@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scene/MajinRouZ.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/Main.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scene/buil_6.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scene/KKJ.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resource/right_target_point.tres" type="Resource" id=11]
+[ext_resource path="res://scene/Enemy_A.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tile_2.png 0"
@@ -259,7 +260,7 @@ position = Vector2( 791.294, 476.217 )
 scale = Vector2( 3, 3 )
 
 [node name="LeftTarget" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1029.91, 559.291 )
+position = Vector2( 1029.91, 560 )
 scale = Vector2( 2, 2 )
 
 [node name="RightTarget" parent="." instance=ExtResource( 4 )]
@@ -268,7 +269,7 @@ position = Vector2( 599.12, 582.621 )
 scale = Vector2( 2, 2 )
 
 [node name="sprite" parent="RightTarget" index="0"]
-modulate = Color( 1, 1, 1, 0.544036 )
+modulate = Color( 1, 1, 1, 0.901961 )
 flip_h = true
 
 [node name="AnimationPlayer" parent="RightTarget" index="2"]
@@ -284,17 +285,24 @@ position = Vector2( 1392, 816 )
 
 [node name="buil_4" parent="building" instance=ExtResource( 7 )]
 position = Vector2( 1040, 736 )
+collision_mask = 1
 
 [node name="buil_7" parent="building" instance=ExtResource( 7 )]
-position = Vector2( 1392, 736 )
+position = Vector2( 1344, 704 )
+collision_mask = 1
 
 [node name="buil" parent="building" instance=ExtResource( 9 )]
 position = Vector2( 1040, 832 )
+collision_mask = 1
 
 [node name="buil2" parent="building" instance=ExtResource( 10 )]
 position = Vector2( 791.294, 368 )
+collision_mask = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
+
+[node name="Enemy_A" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1200, 816 )
 
 [editable path="RightTarget"]

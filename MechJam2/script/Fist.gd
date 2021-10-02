@@ -5,6 +5,7 @@ export var speed := 120
 export var steer_force := 30.0
 
 onready var anime :AnimationPlayer = $AnimationPlayer
+onready var sprite :Sprite = $Sprite
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -17,6 +18,7 @@ func _ready() -> void:
 
 func start(_parent, _target) -> void:
 #	set_as_toplevel(true)
+#	global_position = _parent.global_position
 	set_physics_process(true)
 	parent = _parent
 	acceleration = _target
@@ -59,3 +61,10 @@ func _on_Timer_timeout() -> void:
 func _on_LeftFist_area_entered(area: Area2D) -> void:
 	if area.collision_layer == 1:
 		anime.play('default')
+
+
+
+func _on_RightFist_area_entered(area: Area2D) -> void:
+	if area.collision_layer == 1:
+		anime.play('default')
+

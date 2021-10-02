@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://image/joint.png" type="Texture" id=1]
 [ext_resource path="res://scene/LeftHand.gd" type="Script" id=2]
@@ -16,6 +16,7 @@ extents = Vector2( 3.78718, 2.13621 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "default_pos"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
@@ -23,10 +24,25 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "set_pos"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0 ]
 }
 
 [node name="LeftHand" type="Area2D"]
@@ -36,17 +52,17 @@ Target_point_2 = ExtResource( 6 )
 left_point = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( -0.439957, -0.00761414 )
 texture = ExtResource( 1 )
-offset = Vector2( 4.51019, 0.499246 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 4.17349, -0.472469 )
 shape = SubResource( 2 )
 
 [node name="LeftFist" parent="." instance=ExtResource( 4 )]
+position = Vector2( 14, -1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/default_pos = SubResource( 3 )
+anims/set_pos = SubResource( 4 )
 
 [connection signal="area_entered" from="LeftFist" to="." method="_on_LeftFist_area_entered"]

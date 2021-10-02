@@ -1,20 +1,110 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scene/States.gd" type="Script" id=1]
-[ext_resource path="res://image/ROBO_body.png" type="Texture" id=2]
+[ext_resource path="res://image/ROBO_body_5.png" type="Texture" id=2]
 [ext_resource path="res://script/MajinRouZ.gd" type="Script" id=3]
 [ext_resource path="res://image/tile_2.png" type="Texture" id=4]
 [ext_resource path="res://image/ROBO_wing.png" type="Texture" id=5]
-[ext_resource path="res://image/joint.png" type="Texture" id=6]
+[ext_resource path="res://scene/RightHand.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scene/LeftHand.tscn" type="PackedScene" id=7]
 [ext_resource path="res://image/power_bar.png" type="Texture" id=8]
 [ext_resource path="res://image/target_left.png" type="Texture" id=9]
+[ext_resource path="res://image/ROBO_body_3.png" type="Texture" id=10]
+[ext_resource path="res://image/ROBO_body_L.png" type="Texture" id=11]
+[ext_resource path="res://image/ROBO_body.png" type="Texture" id=12]
+[ext_resource path="res://resource/right_target_point.tres" type="Resource" id=13]
+[ext_resource path="res://scene/RightTargetPoint1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scene/RightTargetPoint2.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.45301, 10.6278 )
+extents = Vector2( 6, 10.6278 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "L_shot"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("defaultAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "default" ),
+"times": PoolRealArray( 1.9 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "R_shot"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("defaultAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "default" ),
+"times": PoolRealArray( 1.9 )
+}
+
+[sub_resource type="Animation" id=4]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.7, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "default"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.7, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 10 ) ]
+}
 
 [node name="MajinRouZ" type="KinematicBody2D"]
-position = Vector2( 78, 58 )
+position = Vector2( 80, 60 )
 z_index = 2
 script = ExtResource( 3 )
 
@@ -82,26 +172,40 @@ texture = ExtResource( 9 )
 visible = false
 texture = ExtResource( 5 )
 
-[node name="Rjoint" type="Sprite" parent="."]
-position = Vector2( -14, 8.5 )
-texture = ExtResource( 6 )
-offset = Vector2( 0, -4.5 )
-flip_h = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4 )
 shape = SubResource( 1 )
 
 [node name="Body" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 12 )
 
 [node name="LeftHand" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4.80125, 6.8591 )
-rotation = -0.15708
+position = Vector2( 5, 8 )
+rotation = -1.5708
 z_index = 1
 z_as_relative = false
+
+[node name="RightHand" parent="." instance=ExtResource( 6 )]
+position = Vector2( -6, 8 )
+rotation = 1.5708
+z_index = 1
+z_as_relative = false
+Target_point_1 = ExtResource( 14 )
+Target_point_2 = ExtResource( 15 )
+right_point = ExtResource( 13 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 0, 200 )
 current = true
 
+[node name="shotAnimation" type="AnimationPlayer" parent="."]
+anims/L_shot = SubResource( 2 )
+anims/R_shot = SubResource( 3 )
+anims/default = SubResource( 4 )
+
+[node name="defaultAnimation" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 5 )
+
 [editable path="LeftHand"]
+[editable path="RightHand"]
+[editable path="RightHand/RightFist"]

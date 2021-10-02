@@ -142,6 +142,8 @@ R_point_add={
 2d_physics/layer_7="right_target_2"
 2d_physics/layer_8="building"
 2d_physics/layer_9="enemy"
+2d_physics/layer_10="bullet"
+2d_physics/layer_11="area"
 
 [physics]
 
