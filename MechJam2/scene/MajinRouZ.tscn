@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scene/States.gd" type="Script" id=1]
 [ext_resource path="res://image/ROBO_body_5.png" type="Texture" id=2]
@@ -15,9 +15,89 @@
 [ext_resource path="res://resource/right_target_point.tres" type="Resource" id=13]
 [ext_resource path="res://scene/RightTargetPoint1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scene/RightTargetPoint2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://resource/left_target_point.tres" type="Resource" id=16]
+[ext_resource path="res://scene/Explosion.tscn" type="PackedScene" id=17]
+
+[sub_resource type="RectangleShape2D" id=6]
+
+[sub_resource type="CanvasItemMaterial" id=7]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.0733333, 0.15, 0.173077, 0.305556, 0.401709, 1 )
+colors = PoolColorArray( 0.846678, 0.853516, 0.803505, 1, 1, 0.960457, 0.714844, 1, 1, 1, 1, 1, 0.829102, 0.829102, 0.829102, 1, 1, 0.902725, 0.00390625, 1, 0.779297, 0.772162, 0.706238, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.307692, 0.583333, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.307692, 0.307692, 0.307692, 1, 0.459402, 0.459402, 0.459402, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+trail_color_modifier = SubResource( 11 )
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 2 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, -5, 0 )
+initial_velocity = 47.05
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 39.51
+linear_accel_random = 1.0
+radial_accel = -14.12
+radial_accel_random = 0.92
+angle = 720.0
+angle_random = 1.0
+scale = 3.0
+scale_random = 1.0
+color_ramp = SubResource( 9 )
+hue_variation = 0.09
+anim_speed = 4.02
+anim_speed_random = 0.8
+
+[sub_resource type="Animation" id=13]
+resource_name = "damage"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Explosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "default"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 10.6278 )
+extents = Vector2( 6, 7 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "L_shot"
@@ -106,7 +186,33 @@ tracks/0/keys = {
 [node name="MajinRouZ" type="KinematicBody2D"]
 position = Vector2( 80, 60 )
 z_index = 2
+collision_mask = 768
 script = ExtResource( 3 )
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_mask = 768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( -1, 1 )
+scale = Vector2( 0.759999, 1 )
+shape = SubResource( 6 )
+
+[node name="Explosion" parent="DamageArea" instance=ExtResource( 17 )]
+material = SubResource( 7 )
+process_material = SubResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageArea"]
+autoplay = "default"
+anims/damage = SubResource( 13 )
+anims/default = SubResource( 14 )
+
+[node name="Timer" type="Timer" parent="DamageArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+disabled = true
 
 [node name="States" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -114,6 +220,7 @@ script = ExtResource( 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="States"]
 
 [node name="ColorRect" type="ColorRect" parent="States/CanvasLayer"]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -124,6 +231,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="HBoxContainer" parent="States/CanvasLayer"]
+visible = false
 margin_left = 424.0
 margin_top = 821.0
 margin_right = 913.0
@@ -134,6 +242,7 @@ __meta__ = {
 }
 
 [node name="RightEBar" type="TextureProgress" parent="States/CanvasLayer/VBoxContainer"]
+visible = false
 margin_right = 194.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
@@ -172,22 +281,19 @@ texture = ExtResource( 9 )
 visible = false
 texture = ExtResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4 )
-shape = SubResource( 1 )
-
 [node name="Body" type="Sprite" parent="."]
-texture = ExtResource( 12 )
+z_index = 1
+texture = ExtResource( 11 )
 
 [node name="LeftHand" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5, 8 )
-rotation = -1.5708
 z_index = 1
 z_as_relative = false
+collision_layer = 2
+left_point = ExtResource( 16 )
 
 [node name="RightHand" parent="." instance=ExtResource( 6 )]
 position = Vector2( -6, 8 )
-rotation = 1.5708
 z_index = 1
 z_as_relative = false
 Target_point_1 = ExtResource( 14 )
@@ -205,6 +311,9 @@ anims/default = SubResource( 4 )
 
 [node name="defaultAnimation" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 5 )
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="timeout" from="DamageArea/Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="LeftHand"]
 [editable path="RightHand"]

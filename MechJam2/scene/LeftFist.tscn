@@ -189,6 +189,9 @@ anims/fire = SubResource( 13 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 2 )
+texture_scale = 1.225
+color = Color( 0.908823, 0.785295, 0.994118, 1 )
+energy = 1.75
 
 [connection signal="area_entered" from="." to="." method="_on_LeftFist_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Hand_body_entered"]

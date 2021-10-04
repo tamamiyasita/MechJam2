@@ -4,9 +4,9 @@ extends Area2D
 onready var right_fist :Area2D = $RightFist
 onready var anime :AnimationPlayer = $AnimationPlayer
 
-enum State {Ready, First_Move, Second_Move, Reach_Point, Return_Fist, Set_Pos}
+enum State {Start, Ready, First_Move, Second_Move, Reach_Point, Return_Fist, Set_Pos}
 
-export(State) var state = State.Ready
+export(State) var state = State.Start
 
 
 export(PackedScene) var Target_point_1
@@ -27,9 +27,12 @@ func _init() -> void:
 
 func _ready() -> void:
 	set_physics_process(true)
-	anime.play('set_pos')
-
-
+	anime.play('default_pos')
+	yield(anime, "animation_finished" )
+	anime.play('charge')
+	yield(anime, "animation_finished" )
+	state = State.Ready
+	
 func _physics_process(delta: float) -> void:
 	_get_input(delta)
 
@@ -57,7 +60,7 @@ func _get_input(delta) -> void:
 		
 	if state == State.Set_Pos:
 		if rotation_degrees == 90:
-			anime.play('set_pos')
+			anime.play('charge')
 			yield(anime, "animation_finished" )
 			state = State.Ready
 			
@@ -72,8 +75,10 @@ func return_fist() -> void:
 		right_fist.set_physics_process(false)
 		right_fist.anime.play("default")
 		right_fist.position = origin_position
-		right_fist.global_position = global_position
-		right_fist.global_transform = origin_transform
+		right_fist.rotation_degrees = 180
+		
+#		right_fist.global_transform = origin_transform
+#		right_fist.global_position = global_position
 		right_target_point.clear()
 		anime.play('default_pos')
 		yield(anime, "animation_finished" )
@@ -86,6 +91,8 @@ func first_target_add() -> void:
 	var target_image = Target_point_1.instance() as Area2D
 	get_parent().owner.add_child(target_image)
 	target_image.global_position = target_position
+	anime.play('set_pos')
+	yield(anime, "animation_finished" )
 	
 	right_fist.start(self, target_position)
 
