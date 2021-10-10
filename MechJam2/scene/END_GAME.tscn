@@ -1,0 +1,320 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scene/END_GAME.gd" type="Script" id=1]
+[ext_resource path="res://image/ROBO_body.png" type="Texture" id=2]
+[ext_resource path="res://image/seeE.png" type="Texture" id=3]
+[ext_resource path="res://image/seeL.png" type="Texture" id=4]
+[ext_resource path="res://image/rou6_sit.png" type="Texture" id=5]
+[ext_resource path="res://image/inventory.png" type="Texture" id=6]
+[ext_resource path="res://Gugi-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://mplus-1c-bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://sound/ED_BGM.ogg" type="AudioStream" id=9]
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+outline_size = 2
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 70
+outline_size = 2
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+outline_size = 2
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+outline_size = 2
+font_data = ExtResource( 7 )
+
+[sub_resource type="StreamTexture" id=6]
+load_path = "res://.import/target_left.png-eeade047cae497b4c95fdfc7b4c3e087.stex"
+
+[sub_resource type="DynamicFont" id=7]
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = -2
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 19
+outline_size = 2
+font_data = ExtResource( 7 )
+
+[node name="END" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+light_mask = 0
+margin_left = 85.1189
+margin_top = -710.374
+margin_right = 149.119
+margin_bottom = -646.374
+rect_scale = Vector2( 40, 40 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Control"]
+visible = false
+margin_left = 1052.13
+margin_top = 194.619
+margin_right = 1092.13
+margin_bottom = 234.618
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inventory" type="Sprite" parent="Control"]
+visible = false
+light_mask = 0
+position = Vector2( 1308.06, 166.337 )
+scale = Vector2( 1.34724, 0.422907 )
+texture = ExtResource( 6 )
+flip_h = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 494.071
+margin_top = -485.765
+margin_right = -311.929
+margin_bottom = -205.765
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0.419608, 1, 0.164706, 1 )
+custom_constants/table_vseparation = 6
+custom_constants/shadow_offset_x = 16
+custom_constants/shadow_offset_y = 5
+custom_constants/table_hseparation = 6
+custom_constants/line_separation = 6
+custom_constants/shadow_as_outline = 5
+bbcode_enabled = true
+bbcode_text = "Thank you for 
+        playing
+"
+text = "Thank you for 
+        playing
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 459.736
+margin_top = -98.5714
+margin_right = -233.264
+margin_bottom = 181.429
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 1, 0.164706, 0.164706, 1 )
+custom_constants/table_vseparation = 6
+custom_constants/shadow_offset_x = 16
+custom_constants/shadow_offset_y = 5
+custom_constants/table_hseparation = 6
+custom_constants/line_separation = 6
+custom_constants/shadow_as_outline = 5
+bbcode_enabled = true
+bbcode_text = "Ikari no Rocket Punch
+"
+meta_underlined = false
+text = "Ikari no Rocket Punch
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Control"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 435.0
+margin_top = -314.0
+margin_right = -858.0
+margin_bottom = -268.0
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0.164706, 0.572549, 1, 1 )
+custom_constants/table_vseparation = 6
+custom_constants/shadow_offset_x = 16
+custom_constants/shadow_offset_y = 5
+custom_constants/table_hseparation = 6
+custom_constants/line_separation = 6
+custom_constants/shadow_as_outline = 5
+bbcode_enabled = true
+bbcode_text = "Super Robot
+"
+meta_underlined = false
+text = "Super Robot
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Control"]
+visible = false
+light_mask = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1175.28
+margin_top = -727.69
+margin_right = -31.7261
+margin_bottom = -681.69
+custom_fonts/normal_font = SubResource( 5 )
+custom_colors/default_color = Color( 0.886275, 0.392157, 0.862745, 1 )
+custom_constants/table_vseparation = 6
+custom_constants/shadow_offset_x = 16
+custom_constants/shadow_offset_y = 5
+custom_constants/table_hseparation = 6
+custom_constants/line_separation = 6
+custom_constants/shadow_as_outline = 5
+bbcode_enabled = true
+bbcode_text = "I'll see you around!"
+meta_underlined = false
+text = "I'll see you around!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="Control"]
+visible = false
+modulate = Color( 0.972549, 1, 0, 1 )
+margin_left = 15.119
+margin_top = 496.409
+margin_right = 180.119
+margin_bottom = 656.409
+texture = SubResource( 6 )
+expand = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_left = 5.49387
+margin_top = 836.672
+margin_right = 105.494
+margin_bottom = 863.672
+color = Color( 0.980392, 0.0392157, 0.0392157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Control/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = SubResource( 7 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_constants/table_vseparation = 6
+custom_constants/shadow_offset_x = 16
+custom_constants/shadow_offset_y = 5
+custom_constants/table_hseparation = 6
+custom_constants/line_separation = 6
+custom_constants/shadow_as_outline = 5
+bbcode_enabled = true
+bbcode_text = "２Mビット使用
+"
+meta_underlined = false
+text = "２Mビット使用
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Control"]
+visible = false
+margin_left = 925.0
+margin_top = 380.0
+margin_right = 977.0
+margin_bottom = 404.0
+text = "Start"
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 776.744, 440.005 )
+scale = Vector2( 12.0843, 13.6277 )
+texture = ExtResource( 4 )
+energy = 0.45
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 845.676
+margin_top = 58.103
+margin_right = 1095.68
+margin_bottom = 215.103
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="TextureRect2"]
+light_mask = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 26.1947
+margin_top = -94.3785
+margin_right = -13.8053
+margin_bottom = -48.3785
+custom_fonts/normal_font = SubResource( 8 )
+custom_colors/default_color = Color( 0.886275, 0.392157, 0.862745, 1 )
+custom_constants/table_vseparation = 6
+custom_constants/shadow_offset_x = 16
+custom_constants/shadow_offset_y = 5
+custom_constants/table_hseparation = 6
+custom_constants/line_separation = 6
+custom_constants/shadow_as_outline = 5
+bbcode_enabled = true
+bbcode_text = "I'll see you around!"
+meta_underlined = false
+text = "I'll see you around!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect2"]
+margin_left = 259.558
+margin_top = 134.84
+margin_right = 299.558
+margin_bottom = 174.839
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

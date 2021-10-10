@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://script/Fist.gd" type="Script" id=1]
 [ext_resource path="res://image/ROBO_left.png" type="Texture" id=2]
 [ext_resource path="res://image/rocket_cloud.png" type="Texture" id=3]
 [ext_resource path="res://image/ROBO_right.png" type="Texture" id=4]
+[ext_resource path="res://sound/ブースター.wav" type="AudioStream" id=5]
+[ext_resource path="res://sound/魔王魂  爆発04.wav" type="AudioStream" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
@@ -61,7 +63,7 @@ anim_offset = 1.0
 anim_offset_random = 1.0
 
 [sub_resource type="CircleShape2D" id=11]
-radius = 4.74041
+radius = 6.07449
 
 [sub_resource type="Animation" id=12]
 resource_name = "default"
@@ -155,7 +157,9 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.0156863, 0.815686, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="RightFist" type="Area2D"]
+[node name="RightFist" type="Area2D" groups=[
+"fist",
+]]
 use_parent_material = true
 position = Vector2( 15, -0.6 )
 rotation = 3.14159
@@ -181,7 +185,7 @@ rotation = 3.14159
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.10489, -0.500613 )
+position = Vector2( 0.784988, 0.56245 )
 shape = SubResource( 11 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -193,6 +197,14 @@ anims/fire = SubResource( 13 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 0.8
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 1.65
 
 [connection signal="area_entered" from="." to="." method="_on_RightFist_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Hand_body_entered"]

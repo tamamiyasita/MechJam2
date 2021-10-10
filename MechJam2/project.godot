@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://script/Fist.gd"
 }, {
+"base": "Node",
+"class": "LEVEL_1",
+"language": "GDScript",
+"path": "res://scene/Level1.gd"
+}, {
 "base": "Resource",
 "class": "LeftPoint",
 "language": "GDScript",
@@ -23,17 +28,24 @@ _global_script_classes=[ {
 "class": "RightPoint",
 "language": "GDScript",
 "path": "res://script/RightTargetList.gd"
+}, {
+"base": "Node",
+"class": "SoundManagerModule",
+"language": "GDScript",
+"path": "res://addons/sound_manager/module/internal_scripts/SoundManager_config.gd"
 } ]
 _global_script_class_icons={
 "Fist": "",
+"LEVEL_1": "",
 "LeftPoint": "",
-"RightPoint": ""
+"RightPoint": "",
+"SoundManagerModule": ""
 }
 
 [application]
 
 config/name="MajinRouZ vs. Steel Monster Corps"
-run/main_scene="res://scene/Main.tscn"
+run/main_scene="res://scene/sousa.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -145,6 +157,8 @@ R_point_add={
 2d_physics/layer_10="bullet"
 2d_physics/layer_11="area"
 2d_physics/layer_12="Labo"
+2d_physics/layer_13="left_target_3"
+2d_physics/layer_14="right_target_3"
 
 [physics]
 

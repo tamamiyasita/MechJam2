@@ -13,7 +13,7 @@ export(PackedScene) var Target_point_1
 export(PackedScene) var Target_point_2
 export(Resource) var right_point
 
-onready var right_target = PathInfo.RightTarget
+onready var right_target = get_node("/root/Main").find_node("RightTarget", true)
 onready var right_target_point = right_point.right_point_list
 
 

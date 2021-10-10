@@ -14,7 +14,7 @@ export(PackedScene) var Target_point_1
 export(PackedScene) var Target_point_2
 export(Resource) var left_point
 
-onready var left_target = PathInfo.LeftTarget
+onready var left_target = get_node("/root/Main").find_node("LeftTarget", true)
 onready var left_target_point = left_point.left_point_list
 
 

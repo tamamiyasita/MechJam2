@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/魔王魂  村05.ogg-c72c1e178a1280fb300c71f6252a2927.oggstr"
+
+[deps]
+
+source_file="res://sound/魔王魂  村05.ogg"
+dest_files=[ "res://.import/魔王魂  村05.ogg-c72c1e178a1280fb300c71f6252a2927.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

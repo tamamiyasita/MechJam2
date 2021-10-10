@@ -2,10 +2,10 @@ extends KinematicBody2D
 onready var canon :Sprite = $Canon
 onready var timer :Timer = $Timer
 onready var anime :AnimationPlayer = $AnimationPlayer
-
+onready var audio :AudioStreamPlayer = $AudioStreamPlayer
 
 var velo = -30
-var speed = Vector2.DOWN
+export(Vector2) var speed = Vector2.DOWN
 var target
 
 export(PackedScene) var Bullet
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		var v = target.global_position - canon.global_position
 		var angle = v.angle()
 		var r = canon.global_rotation
-		canon.global_rotation = lerp(r, angle, .02)
+		canon.global_rotation = lerp_angle(r, angle, .02)
 #		canon.look_at(target.global_position)
 	else:
 		move_and_slide(speed * velo)
@@ -35,6 +35,7 @@ func shoot() ->void:
 	var b = Bullet.instance()
 	b.position.x += 10
 	canon.add_child(b)
+	audio.play()
 
 
 
@@ -51,4 +52,5 @@ func _on_Timer_timeout() -> void:
 
 
 func _on_DamageArea_area_entered(area: Area2D) -> void:
+	get_tree().call_group("main", "dead_enemy")
 	anime.play('bom')

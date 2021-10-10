@@ -6,6 +6,7 @@ export var steer_force := 30.0
 
 onready var anime :AnimationPlayer = $AnimationPlayer
 onready var sprite :Sprite = $Sprite
+onready var audio :AudioStreamPlayer = $AudioStreamPlayer
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -15,6 +16,23 @@ var parent
 func _ready() -> void:
 	set_physics_process(false)
 	anime.play('default')
+	$Light2D.scale *= PathInfo.power_level
+	$CollisionShape2D.scale *= PathInfo.power_level
+	
+	speed *= PathInfo.speed_level
+	steer_force *= PathInfo.speed_level
+
+
+func update_level(value) -> void:
+	if value == "Power":
+		$Light2D.scale *= 2.5
+		$CollisionShape2D.scale *= 1.65
+	elif value == "Speed":
+		speed *= 1.5
+		steer_force *= 1.5
+
+	
+
 
 func start(_parent, _target) -> void:
 #	set_as_toplevel(true)
@@ -26,6 +44,7 @@ func start(_parent, _target) -> void:
 	velocity = global_transform.x * speed
 	target = _target
 	anime.play('fire')
+	audio.play()
 
 
 func seek():
@@ -61,10 +80,13 @@ func _on_Timer_timeout() -> void:
 func _on_LeftFist_area_entered(area: Area2D) -> void:
 	if area.collision_layer == 1:
 		anime.play('default')
+	else:
+		$AudioStreamPlayer2.play()
 
 
 
 func _on_RightFist_area_entered(area: Area2D) -> void:
 	if area.collision_layer == 1:
 		anime.play('default')
-
+	else:
+		$AudioStreamPlayer2.play()

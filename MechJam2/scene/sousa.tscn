@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://image/2021-10-06 (2).png" type="Texture" id=1]
+[ext_resource path="res://Gugi-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scene/sousa.gd" type="Script" id=3]
+[ext_resource path="res://image/inventory.png" type="Texture" id=4]
+[ext_resource path="res://image/rou6_sit.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+outline_size = 1
+outline_color = Color( 0.247059, 0.47451, 0.0196078, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 19
+outline_size = 2
+font_data = ExtResource( 2 )
+
+[node name="sousa" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.247059, 0.247059, 0.407843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -375.0
+margin_top = -404.0
+margin_right = 1175.0
+margin_bottom = 468.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -373.616
+margin_top = 41.8811
+margin_right = 346.384
+margin_bottom = 409.881
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "How to operate
+
+Target Mark Move
+Left = [ W, A, S, D ] keys
+Right = [ I,  J ,K, L ] keys
+
+Rocket punch launch
+LEFT = [ F ] key
+Right = [ H ] key
+
+Up to 2 target marks can be installed"
+meta_underlined = false
+text = "How to operate
+
+Target Mark Move
+Left = [ W, A, S, D ] keys
+Right = [ I,  J ,K, L ] keys
+
+Rocket punch launch
+LEFT = [ F ] key
+Right = [ H ] key
+
+Up to 2 target marks can be installed"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inventory" type="Sprite" parent="."]
+visible = false
+light_mask = 0
+position = Vector2( 962.283, 590.204 )
+scale = Vector2( 1.34724, 0.474074 )
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 929.581
+margin_top = 518.083
+margin_right = 1179.58
+margin_bottom = 675.083
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="TextureRect2"]
+light_mask = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 41.3137
+margin_top = -109.498
+margin_right = 1.31372
+margin_bottom = -63.4976
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0.886275, 0.392157, 0.862745, 1 )
+custom_constants/table_vseparation = 6
+custom_constants/shadow_offset_x = 16
+custom_constants/shadow_offset_y = 5
+custom_constants/table_hseparation = 6
+custom_constants/line_separation = 6
+custom_constants/shadow_as_outline = 5
+bbcode_enabled = true
+bbcode_text = "Press any key to start the game"
+meta_underlined = false
+text = "Press any key to start the game"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect2"]
+margin_left = 259.558
+margin_top = 134.84
+margin_right = 299.558
+margin_bottom = 174.839
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
